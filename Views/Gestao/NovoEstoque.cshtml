@@ -1,0 +1,20 @@
+@model marketproject.DTO.EstoqueDTO
+@{
+    Layout = "_LayoutAdmin";
+}
+<h3>Adicionar um novo estoque</h3>
+<hr/>
+<form class="form-horizontal" asp-controller="Estoque" asp-action="Salvar" method="POST">
+    <input type="hidden" asp-for="Id" value="0">
+
+    <label asp-for="Produto">Produto</label>
+    <input type="text" asp-for="Produto" class="form-control" placeholder="Produto">
+    <span asp-validation-for="Produto"></span><br>
+
+    <label asp-for="Quantidade">Quantidade</label>
+    <input type="float" asp-for="Quantidade" class="form-control" placeholder="Quantidade">
+    <span asp-validation-for="Quantidade"></span><br>
+
+    <button class="btn btn-success">Adicionar</button>
+
+</form>

@@ -1,0 +1,64 @@
+@model IEnumerable<marketproject.Models.Produto>
+@{
+    Layout = "_LayoutAdmin";
+}
+<h3>Produtos</h3>
+<hr/>
+<a asp-action="NovoProduto" asp-controller="Gestao" class="btn btn-success">Criar novo Produto</a>
+<hr/>
+
+<script>
+    $(document).ready( function () {
+    $('#produto').DataTable();
+} );
+</script>
+
+<table id="produto"class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Fornecedor</th>
+            <th>Preço de Custo</th>
+            <th>Preço de Venda</th>
+            <th>Medição</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model)
+        {
+            <tr>
+                <td>@produto.Id</td>
+                <td>@produto.Nome</td>
+                <td>@produto.Categoria.Nome</td>
+                <td>@produto.Forncedor.Nome</td>
+                <td>@produto.PrecoDeCusto</td>
+                <td>@produto.PrecoDeVenda</td>
+                <td>
+                    @if(@produto.Medicao == 0)
+                    {
+                        <span>Litro</span>
+                    }
+                    else if(@produto.Medicao == 1)
+                    {
+                        <span>Kg</span>
+                    }
+                    else
+                    {
+                        <span>Unidade</span>
+                    }
+
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="/Gestao/EditarProduto/@produto.Id">Editar</a> 
+                    <form asp-controller="Produto" asp-action="Deletar" style="display: inline;">
+                        <input type="hidden" name="id" id="id" value="@produto.Id">
+                        <button class="btn btn-danger">Deletar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

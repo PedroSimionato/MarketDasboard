@@ -1,0 +1,24 @@
+@model marketproject.DTO.FornecedorDTO
+@{
+    Layout = "_LayoutAdmin";
+}
+<h3>Editar forecedor</h3>
+<hr>
+<form class="form-horizontal" asp-controller ="Fornecedor" asp-action ="Atualizar" method="POST">
+    <input type="hidden" asp-for="Id">
+
+    <label asp-for="Nome">Nome</label>
+    <input type="text" asp-for="Nome" class="form-control" placeholder="Nome do fornecedor">
+    <span asp-validation-for="Nome"></span><br>
+
+    <label asp-for="Email">Email</label>
+    <input type="email" asp-for="Email" class="form-control" placeholder="emaildo@Fornecedor.com">
+    <span asp-validation-for="Email"></span><br>
+
+    <label asp-for="Telefone">Telefone</label>
+    <input type="text" asp-for="Telefone" class="form-control" placeholder="98 7654-3210">
+    <span asp-validation-for="Telefone"></span><br>
+
+    <button class="btn btn-success">Salvar</button>
+    <hr/>
+</form>
